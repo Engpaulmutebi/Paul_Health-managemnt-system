@@ -1,0 +1,52 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <div class="container-fluid d-flex align-items-center" style="min-height: 100vh; background-color: white;">
+        <div class="row w-100 justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <form action="" method="POST" class="bg-light p-4 rounded shadow">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4 text-black">Sign In Now</legend>
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group mt-4">
+                        <button class="btn custom-btn btn-block">Sign In</button>
+                    </div>
+                    <div class="form-group mt-3">
+                        <small>
+                            <a href="#" style="color: red;">Forgot Password?</a>
+                        </small>
+                    </div>
+                    <div class="form-group mt-2">
+                        <small class="text-muted">
+                            Don't have an account yet? <a href="{% url 'register' %}" style="color: blue;">Sign Up </a>
+                        </small>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .form-control {
+            color: black !important;
+            border-radius: 5px !important; /* Rounded corners for input fields */
+            margin-bottom: 15px; /* Space between input fields */
+        }
+
+        .custom-btn {
+            background-color: orange !important;
+            border-color: orange !important;
+            border-radius: 5px !important; /* Rounded corners for button */
+        }
+
+        .custom-btn:hover {
+            background-color: darkorange !important;
+            border-color: darkorange !important;
+        }
+    </style>
+{% endblock %}
