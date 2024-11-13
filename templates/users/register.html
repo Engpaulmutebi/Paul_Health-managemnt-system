@@ -1,85 +1,40 @@
 {% extends 'users/base.html' %}
-{% load crispy_forms_tags %}
-{% load static %}
+
+{% block title %}Sign In - Dcare Inc.{% endblock %}
 
 {% block content %}
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <div class="container-fluid d-flex align-items-center" style="min-height: 100vh; background-color: white;">
-        <div class="row w-100 justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6">
-                <form action="" method="POST">
-                    {% csrf_token %}
-                    <fieldset class="form-group">
-                        <legend class="border-bottom mb-4 text-dark">Join Now</legend>
-                        {{ form|crispy }}
-                    </fieldset>
-                    <div class="form-group mt-4">
-                        <button class="btn custom-btn btn-block">Sign Up</button>
-                    </div>
-                    <div class="form-group text-center mt-3">
-                        <small class="text-muted">Already have an account? <a href="{% url 'login' %}">Sign In</a></small>
-                    </div>
-                </form>
-            </div>
+<div class="d-flex justify-content-center">
+    <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
+        <div class="card-body">
+            <h2 class="text-center mb-4">Sign in</h2>
+            <p class="text-center">Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
+            <form method="POST">
+                {% csrf_token %}
+            
+                <div class="form-group">
+                    <label for="password">Username</label>
+                    {{form.username}}
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    {{form.email}}
+                </div>
+                <div class="form-group">
+                    <label for="password">Password1</label>
+                    {{form.password1}}
+                </div>
+                <div class="form-group">
+                    <label for="password">ConfirmPassword</label>
+                    {{form.password2}}
+                </div>
+                <div class="form-group">
+                    <label for="password">UserType</label>
+                    {{form.user_type}}
+                </div>
+                
+                <button type="submit" class="btn btn-danger btn-block btn-round mt-4">Sign up <i class="fas fa-sign-in-alt"></i></button>
+            </form>
         </div>
     </div>
-
-    <style>
-        /* Custom styles for the form */
-        .form-control {
-            color: black !important; /* Ensure text is black in input fields */
-            border-radius: 12px; /* Round corners of the input fields */
-            height: 50px; /* Set the height of the input fields for better vertical size */
-            padding: 15px; /* Add padding inside input fields */
-            margin-bottom: 1.2rem; /* Add some space between input fields */
-            max-width: 100%; /* Ensure input fields are responsive */
-        }
-
-        .form-group {
-            max-width: 400px; /* Limit the maximum width of the form group */
-            margin: 0 auto; /* Center the form group horizontally */
-        }
-
-        /* Custom button style */
-        .custom-btn {
-            background-color: orange !important; /* Set the button color to orange */
-            border-color: orange !important; /* Set the button border to orange */
-            border-radius: 12px; /* Round the button's corners */
-        }
-
-        .custom-btn:hover {
-            background-color: darkorange !important; /* Darker shade of orange on hover */
-            border-color: darkorange !important;
-        }
-
-        /* Adjust the form fields to be responsive and well-spaced */
-        .container-fluid {
-            padding: 0; /* Remove extra padding from container */
-        }
-
-        .row {
-            margin-top: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem; /* Adjust spacing between form elements */
-        }
-
-        .btn {
-            width: 100%; /* Full-width button */
-            padding: 12px 20px; /* Increase padding for better UX */
-            font-size: 1.1rem;
-            border-radius: 12px; /* Round the button's corners */
-        }
-
-        /* Label color adjustment */
-        label {
-            color: black !important; /* Make the labels black */
-        }
-
-        /* Add some spacing between the form and text below */
-        .small {
-            font-size: 1rem;
-        }
-    </style>
+</div>
 {% endblock %}
