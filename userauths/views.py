@@ -51,9 +51,9 @@ def register_view(request):
     return render(request, 'users/register.html', {'form':form})
 
 def Login_view(request):
-    if request.user.is_authenticated:
-        messages.success(request, "You are already logged in ")
-        return redirect("/")
+    # if request.user.is_authenticated:
+    #     messages.success(request, "You are already logged in ")
+    #     return redirect("/")
     
     if request.method == "POST":
         form = userauths_form.LoginForm(request.POST)
@@ -77,8 +77,8 @@ def Login_view(request):
                     messages.error(request,"Username or password does not exist")
             except:
                 messages.error(request,"User does not exist")
-        else:
-            form = userauths_form.LoginForm()
+    else:
+        form = userauths_form.LoginForm()
         context = {
             'form':form
         } 
@@ -87,6 +87,6 @@ def Login_view(request):
 def Logout_view(request):
     logout(request)
     messages.success(request,'Logout Successfully')
-    return redirect('/')        
+    return redirect('login/')        
 
 
