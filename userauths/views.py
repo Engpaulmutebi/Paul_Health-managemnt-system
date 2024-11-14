@@ -9,12 +9,6 @@ from patient import models as patient_models
 from userauths import models as userauths_models
 
 
-# Create your views here.
-
-def home(request):
-    return render(request, 'users/profile.html')
-
-
 def register_view(request):
     # if request.user.is_authenticated:
     #     messages.success(request, "You are already logged in ")

@@ -128,56 +128,25 @@
   <div class="container services-section">
     <h2 class="text-center">Our Services</h2>
     <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, reiciendis.</p>
+
     <div class="row">
+      {% for s in services %}
       <div class="col-md-3">
         <div class="card">
-          <img src="static/users/images/bg.jpg" class="card-img-top" alt="Service">
+          <img src="{{s.image}}" class="card-img-top" alt="Service">
           <div class="card-body">
-            <h5 class="card-title">Neurology</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <p><strong>Doctors Available: 17</strong></p>
-            <p><strong>$25</strong></p>
+            <h5 class="card-title">{{s.name}}</h5>
+            <p class="card-text">{{s.description|truncatechars:40}}</p>
+            <p><strong>Doctors Available: {{s.available_doctors.all.count}}</strong></p>
+            <p><strong>{{s.cost}}</strong></p>
             <a href="#" class="btn btn-danger rounded-btn"><i class="fas fa-calendar-check"></i> Book Appointment</a>
           </div>
         </div>
+        
       </div>
-      <div class="col-md-3">
-        <div class="card">
-          <img src="static/users/images/bg.jpg" class="card-img-top" alt="Service">
-          <div class="card-body">
-            <h5 class="card-title">Neurology</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <p><strong>Doctors Available: 17</strong></p>
-            <p><strong>$25</strong></p>
-            <a href="#" class="btn btn-danger rounded-btn"><i class="fas fa-calendar-check"></i> Book Appointment</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card">
-          <img src="static/users/images/bg.jpg" class="card-img-top" alt="Service">
-          <div class="card-body">
-            <h5 class="card-title">Neurology</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <p><strong>Doctors Available: 17</strong></p>
-            <p><strong>$25</strong></p>
-            <a href="#" class="btn btn-danger rounded-btn"><i class="fas fa-calendar-check"></i> Book Appointment</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card">
-          <img src="static/users/images/bg.jpg" class="card-img-top" alt="Service">
-          <div class="card-body">
-            <h5 class="card-title">Neurology</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <p><strong>Doctors Available: 17</strong></p>
-            <p><strong>$25</strong></p>
-            <a href="#" class="btn btn-danger rounded-btn"><i class="fas fa-calendar-check"></i> Book Appointment</a>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
+    
   </div>
 
   <!-- Get Appointment Now Section -->

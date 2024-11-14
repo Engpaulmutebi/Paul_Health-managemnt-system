@@ -5,7 +5,7 @@ from patient import models as patient_models
 from shortuuid.django_fields import ShortUUIDField
 
 class Service(models.Model):
-  image = models.FileField(upload_to='images', null=True, blank=True)
+  image = models.FileField(upload_to='images/', null=True, blank=True)
   name = models.CharField(max_length=255)
   description = models.TextField(blank=True,null=True)
   cost = models.DecimalField(max_digits=10,decimal_places=2)
