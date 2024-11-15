@@ -139,7 +139,7 @@
             <p class="card-text">{{s.description|truncatechars:40}}</p>
             <p><strong>Doctors Available: {{s.available_doctors.all.count}}</strong></p>
             <p><strong>{{s.cost}}</strong></p>
-            <a href="#" class="btn btn-danger rounded-btn"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+            <a href="{% url 'service_detail' s.id %}" class="btn btn-danger rounded-btn" type="submit"><i class="fas fa-calendar-check"></i> Book Appointment</a>
           </div>
         </div>
         

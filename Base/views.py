@@ -18,5 +18,5 @@ def service_detail(request, service_id):
         'service':service
     }
     
-    return render(request, 'users/profile.html',context)
+    return render(request, 'users/service_detail.html',context)
 
