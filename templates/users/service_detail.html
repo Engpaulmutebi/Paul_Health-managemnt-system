@@ -1,0 +1,50 @@
+{% extends 'users/base.html' %}
+
+{% block title %}Sign In - Dcare Inc.{% endblock %}
+                     
+{% block content %}
+    <div class="container">
+        <div class="bg-white p-4 rounded shadow-sm service-content">
+            <h1 class="service-title">{{service.name}}</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>{{service.description}}</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="{{service.images.url}}" alt="Cardiology" class="img-fluid">
+                </div>
+            </div>
+        </div>
+
+        <!-- Available Doctors Section -->
+        <div class="bg-white p-4 rounded shadow-sm mt-5">
+            <h2 class="mt-4 font-weight-bold text-danger">Available Doctors</h2>
+            {% for d in service.available_doctors.all %}
+            <div class="doctor-card media mt-3">
+                <img src="static/users/images/bg.jpg" alt="Doctor Amy Wyatt" class="mr-3">
+                <div class="media-body d-flex justify-content-between align-items-center">
+                    <di>
+                        <h7 class="mt-0 font-weight-bold text-primary">{{d.full_name}}</h7>
+                        <div class="d-flex gap-2">
+                            <p class="fw-semibold mt-0 mb-0 font-weight-bold"> Time Available:</p>
+                            <p class="mt-0 mb-0">4th july 2024</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <p class="fw-semibold mt-0 mb-0 font-weight-bold"> Price:</p>
+                            <p class="mt-0 mb-0 custom-bold-red"> ${{service.cost}}</p>
+                        </div>  
+                    </div>
+                    <button class="book-now-btn">Book Now</button>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- Add more doctor profiles as needed -->
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

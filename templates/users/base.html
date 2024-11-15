@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dcare Inc.{% endblock %}</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .navbar-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar-custom {
+      background-color: rgb(25, 25, 58);
+    }
+    .navbar-nav {
+      margin: 0 auto;
+    }
+    .navbar-nav .nav-item {
+      margin: 0 10px;
+    }
+    .rounded-btn {
+      border-radius: 50px;
+    }
+    .service-title {
+      color: #dc3545;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .service-content img {
+      width: 100%;
+      max-width: 300px; /* Reduced image size */
+      height: auto;
+      border-radius: 10px;
+    }
+    .doctor-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+    }
+    .doctor-card img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+    }
+    .doctor-card h5 {
+            margin-top: 10px;
+            color: #003366; /* Dark blue color for doctor names */
+    }
+    .book-now-btn {
+            margin-top: 10px;
+            background-color: #dc3545; /* Red background for the button */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+    }
+    .book-now-btn:hover {
+            background-color: #c82333; /* Darker red for hover effect */
+    }
+    
+  </style>
+</head>
+<body>
+    <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <div class="navbar-container">
+      <a class="navbaar-brand" href="#">DCare Inc.</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Doctor Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Patient Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pages</a>
+          </li>
+        </ul>
+        <form class="d-flex ms-auto" id="authstyle">
+          <a href="{% url 'login' %}" class="btn btn-outline-danger rounded-btn" style=" margin-left: 10px;" type="submit" id="header-links">Log In</a>
+                     
+          <a href="{% url 'login' %}" class="btn btn btn-outline-danger rounded-btn" style=" margin-left: 10px;" type="submit" id="header-links">log out</a>
+        </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

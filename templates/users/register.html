@@ -1,0 +1,40 @@
+{% extends 'users/base.html' %}
+
+{% block title %}Sign In - Dcare Inc.{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center">
+    <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
+        <div class="card-body">
+            <h2 class="text-center mb-4">Sign in</h2>
+            <p class="text-center">Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
+            <form method="POST">
+                {% csrf_token %}
+            
+                <div class="form-group">
+                    <label for="password">Username</label>
+                    {{form.username}}
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    {{form.email}}
+                </div>
+                <div class="form-group">
+                    <label for="password">Password1</label>
+                    {{form.password1}}
+                </div>
+                <div class="form-group">
+                    <label for="password">ConfirmPassword</label>
+                    {{form.password2}}
+                </div>
+                <div class="form-group">
+                    <label for="password">UserType</label>
+                    {{form.user_type}}
+                </div>
+                
+                <button type="submit" class="btn btn-danger btn-block btn-round mt-4">Sign up <i class="fas fa-sign-in-alt"></i></button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

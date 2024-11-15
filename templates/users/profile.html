@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DCare Inc.</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    .navbar-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar-custom {
+      background-color: rgb(25, 25, 58);
+    }
+    .navbar-nav {
+      margin: 0 auto;
+    }
+    .navbar-nav .nav-item {
+      margin: 0 10px;
+    }
+    .rounded-btn {
+      border-radius: 50px;
+    }
+    .hero-section {
+      padding: 60px 0;
+      text-align: center;
+      background-color: #f8f9fa;
+    }
+    .hero-section h1 {
+      font-size: 2.5rem;
+      color: #e63946;
+    }
+    .hero-section p {
+      font-size: 1.2rem;
+      color: #495057;
+    }
+    .hero-section .btn {
+      margin: 10px;
+    }
+    .services-section {
+      padding: 60px 0;
+    }
+    .services-section h2 {
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #343a40;
+    }
+    .services-section p {
+      color: #6c757d;
+    }
+    .card {
+      margin-bottom: 30px;
+    }
+    .appointment-section {
+      padding: 60px 0;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+    .appointment-section h2 {
+      font-size: 2rem;
+      color: #343a40;
+    }
+    .appointment-section p {
+      color: #6c757d;
+    }
+    .appointment-section .btn {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <div class="navbar-container">
+      <a class="navbaar-brand" href="#">DCare Inc.</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Doctor Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Patient Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pages</a>
+          </li>
+        </ul>
+        <form class="d-flex ms-auto" id="authstyle">
+          <a href="{% url 'login' %}" class="btn btn-outline-danger rounded-btn" style=" margin-left: 10px;" type="submit" id="header-links">Log In</a>
+                     
+          <a href="{% url 'login' %}" class="btn btn btn-outline-danger rounded-btn" style=" margin-left: 10px;" type="submit" id="header-links">log out</a>
+        </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="container hero-section">
+    <div class="row align-items-center">
+      <div class="col-md-6 hero-text">
+        <h1 class="display-4"><span class="text-danger">Extraordinary</span> Care is Right Here With <span class="text-primary">You</span>.</h1>
+        <p class="lead">Every patient is different, every smile is unique. We prioritize safety with health checks, contactless check-in, enhanced PPE, and more.</p>
+        <a href="{% url 'register' %}" class="btn btn-outline-danger btn-lg mr-3 rounded-btn"><i class="fas fa-user-plus"></i> Create Account</a>
+        <a href="#" class="btn btn-primary btn-lg rounded-btn"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+      </div>
+      <div class="col-md-6">
+        <img src="static/users/images/bg.jpg" class="img-fluid" alt="Get Appointment Now">
+      </div>
+    
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <div class="container services-section">
+    <h2 class="text-center text-danger font-weight-bold" >Our Services</h2>
+    <p class="text-center">These are some of the services we offer at D.care Hospital.</p>
+
+    <div class="row">
+      {% for s in services %}
+      <div class="col-md-3" >
+
+        <div class="card">
+          <a href="{% url 'service_detail' s.id %}"type="submit">
+            <img src="{{s.image}}" href="{% url 'service_detail' s.id %}" type="submit"class="card-img-top" alt="Service">
+          </a>  
+          <div class="card-body">
+            <h5 class="card-title text-primary font-weight-bold"><a href="{% url 'service_detail' s.id %}"type="submit">{{s.name}}</a></h5>
+            <p class="card-text">{{s.description|truncatechars:40}}</p>
+            <p class="text-danger"><strong>Doctors Available: {{s.available_doctors.all.count}}</strong></p>
+            <p><strong>{{s.cost}}</strong></p>
+            <a href="{% url 'service_detail' s.id %}" class="btn  btn-outline-primary rounded-btn" type="submit"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+          </div>
+        </div>
+        
+      </div>
+      {% endfor %}
+    </div>
+    
+  </div>
+
+  <!-- Get Appointment Now Section -->
+  <div class="container appointment-section">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Get Appointment Now!</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et voluptate omnis accusantium. Tenetur explicabo vero quo dolore. Repudiandae itaque accusantium dolor ab. Blanditiis esse tempore ut ad accusantium nihil?</p>
+        <button class="btn btn-outline-danger rounded-btn"><i class="fas fa-eye"></i> View Services</button>
+        <button class="btn btn-danger rounded-btn"><i class="fas fa-user-plus"></i> Create Account</button>
+        <button class="btn btn-danger rounded-btn"><i class="fas fa-info-circle"></i> Learn More</button>
+      </div>
+      <div class="col-md-6">
+        <img src="static/users/images/bg.jpg" class="img-fluid" alt="Get Appointment Now">
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
