@@ -10,3 +10,13 @@ def home(request):
     }
     
     return render(request, 'users/profile.html',context)
+
+def service_detail(request, service_id):
+    service = base_models.Service.objects.get(id = service_id)
+
+    context = {
+        'service':service
+    }
+    
+    return render(request, 'users/profile.html',context)
+
