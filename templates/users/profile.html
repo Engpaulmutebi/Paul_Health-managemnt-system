@@ -126,20 +126,23 @@
 
   <!-- Services Section -->
   <div class="container services-section">
-    <h2 class="text-center">Our Services</h2>
-    <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, reiciendis.</p>
+    <h2 class="text-center text-danger font-weight-bold" >Our Services</h2>
+    <p class="text-center">These are some of the services we offer at D.care Hospital.</p>
 
     <div class="row">
       {% for s in services %}
-      <div class="col-md-3">
+      <div class="col-md-3" >
+
         <div class="card">
-          <img src="{{s.image}}" class="card-img-top" alt="Service">
+          <a href="{% url 'service_detail' s.id %}"type="submit">
+            <img src="{{s.image}}" href="{% url 'service_detail' s.id %}" type="submit"class="card-img-top" alt="Service">
+          </a>  
           <div class="card-body">
-            <h5 class="card-title">{{s.name}}</h5>
+            <h5 class="card-title text-primary font-weight-bold"><a href="{% url 'service_detail' s.id %}"type="submit">{{s.name}}</a></h5>
             <p class="card-text">{{s.description|truncatechars:40}}</p>
-            <p><strong>Doctors Available: {{s.available_doctors.all.count}}</strong></p>
+            <p class="text-danger"><strong>Doctors Available: {{s.available_doctors.all.count}}</strong></p>
             <p><strong>{{s.cost}}</strong></p>
-            <a href="{% url 'service_detail' s.id %}" class="btn btn-danger rounded-btn" type="submit"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+            <a href="{% url 'service_detail' s.id %}" class="btn  btn-outline-primary rounded-btn" type="submit"><i class="fas fa-calendar-check"></i> Book Appointment</a>
           </div>
         </div>
         
